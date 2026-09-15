@@ -1,0 +1,43 @@
+/* Tabs — one tab primitive for every tabbed surface.
+   Behaviour (src/js/tabs.js) drives aria-selected / hidden; style follows it.
+   Modifier: --pills */
+
+.zq-tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--zq-space-5);
+  border-bottom: var(--zq-border-width-hairline) solid var(--zq-color-border-base);
+}
+.zq-tab {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-bottom: var(--zq-border-width-thick) solid transparent;
+  margin-bottom: calc(var(--zq-border-width-hairline) * -1);
+  padding: var(--zq-space-3) 0;
+  font: inherit;
+  font-size: var(--zq-font-size-3);
+  font-weight: var(--zq-font-weight-medium);
+  color: var(--zq-color-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.zq-tab:hover { color: var(--zq-color-text-base); }
+.zq-tab[aria-selected="true"] {
+  color: var(--zq-color-text-heading);
+  border-bottom-color: var(--zq-color-accent-base);
+}
+.zq-tab:focus-visible { outline: 2px solid var(--zq-color-accent-base); outline-offset: 2px; }
+
+.zq-tabs--pills { border-bottom: 0; gap: var(--zq-space-2); }
+.zq-tabs--pills .zq-tab {
+  padding: var(--zq-space-2) var(--zq-space-3);
+  border: var(--zq-border-width-hairline) solid transparent;
+  border-radius: var(--zq-radius-md);
+  margin-bottom: 0;
+}
+.zq-tabs--pills .zq-tab[aria-selected="true"] {
+  background: var(--zq-color-bg-surface-2);
+  border-color: var(--zq-color-border-base);
+  color: var(--zq-color-text-heading);
+}

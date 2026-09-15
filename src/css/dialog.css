@@ -1,0 +1,30 @@
+/* Dialog — styling for the native <dialog> element opened by src/js/dialog.js.
+   Parts: __header __title __body __footer */
+
+.zq-dialog {
+  width: min(32rem, calc(100vw - var(--zq-space-8)));
+  padding: 0;
+  border: var(--zq-border-width-hairline) solid var(--zq-color-border-base);
+  border-radius: var(--zq-radius-lg);
+  background: var(--zq-color-bg-surface);
+  color: var(--zq-color-text-base);
+  box-shadow: var(--zq-shadow-lg);
+}
+.zq-dialog::backdrop { background: color-mix(in srgb, var(--zq-color-bg-inset) 72%, transparent); }
+.zq-dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--zq-space-3);
+  padding: var(--zq-space-4) var(--zq-space-5);
+  border-bottom: var(--zq-border-width-hairline) solid var(--zq-color-border-subtle);
+}
+.zq-dialog__title { margin: 0; font-size: var(--zq-font-size-4); font-weight: var(--zq-font-weight-semibold); color: var(--zq-color-text-heading); }
+.zq-dialog__body { padding: var(--zq-space-5); }
+.zq-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--zq-space-2);
+  padding: var(--zq-space-4) var(--zq-space-5);
+  border-top: var(--zq-border-width-hairline) solid var(--zq-color-border-subtle);
+}

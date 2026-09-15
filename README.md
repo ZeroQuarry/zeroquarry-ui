@@ -99,9 +99,27 @@ the build if a component hard-codes a colour or references an undefined token.
 | Badge / severity chip | `.zq-badge` | `--critical --high --medium --low --info --success --neutral` |
 | Notice | `.zq-notice` | `--info --success --warning --danger`, `__icon __content __title __body __actions` |
 | Page header | `.zq-page-header` | `__titles __title __subtitle __meta __actions` |
+| Table | `.zq-table` | `--compact`, `__num __select __actions` (wrap in `.zq-table-wrap`) |
+| Tabs | `.zq-tabs` | `--pills`, `.zq-tab` (driven by `aria-selected`) |
+| Pager | `.zq-pager` | `__summary __pages __link __gap` |
+| States | `.zq-empty`, `.zq-loading`, `.zq-error` | `__icon __title __body __actions`, `.zq-spinner` |
+| Dialog | `.zq-dialog` | `__header __title __body __footer` (native `<dialog>`) |
+
+## Behaviours
+
+Dependency-free, progressive enhancement, shipped as `dist/zeroquarry-ui.js`.
+Each behaviour is hooked off a `data-zq-*` attribute so it only touches markup
+that opts in, and is idempotent (re-run `ZQ.init(root)` after swapping in
+fetched content). Everything degrades gracefully if the script never loads.
+
+| Behaviour | Hook | Notes |
+|---|---|---|
+| Dialog | `data-zq-dialog-open` / `data-zq-dialog-close` on a native `<dialog data-zq-dialog>` | top layer, focus trap and Esc come free from `<dialog>` |
+| Tabs | `[data-zq-tabs]` with ARIA `tablist`/`tab`/`tabpanel` | roving tabindex + Arrow/Home/End; emits `zq:tabchange` |
+| Disclosure | `data-zq-disclosure` + `aria-controls` | toggles `hidden` and `aria-expanded` |
 
 ```bash
-npm run build   # tokens + bundle
+npm run build   # tokens + css bundle + js bundle
 npm run lint    # no raw colours, no undefined tokens, namespaced classes
 ```
 
@@ -125,7 +143,8 @@ keeps the app side honest while this lands.
 - [x] **Increment 1 — foundation**: repo, token pipeline, living style guide.
 - [x] **Increment 2 — primitives**: button, card, badge/severity chip, notice,
       page header (CSS layer + docs + craft guard).
-- [ ] **Increment 3 — data display**: table, tabs, pager, empty/loading/error
-      states + the first JS behaviours.
+- [x] **Increment 3 — data display & behaviours**: table, tabs, pager,
+      empty/loading/error states, dialog — plus the first dependency-free JS
+      behaviours (dialog, tabs, disclosure).
 - [ ] **Increment 4 — adoption**: vendor into ZeroQuarry and migrate page by
       page, deleting the corresponding rules from `static/style.css`.

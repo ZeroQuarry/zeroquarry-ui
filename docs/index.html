@@ -132,6 +132,94 @@
     </div>
   </section>
 
+
+  <section id="data">
+    <h2>Data display &amp; states</h2>
+    <p>Table, tabs, pager and the empty/loading/error states — plus the first behaviours, wired by <code>dist/zeroquarry-ui.js</code>.</p>
+
+    <div class="group-title">table</div>
+    <div class="zq-table-wrap">
+      <table class="zq-table">
+        <thead><tr>
+          <th class="zq-table__select"><input type="checkbox" aria-label="Select all rows"></th>
+          <th>Finding</th><th>Severity</th><th class="zq-table__num">CVSS</th><th class="zq-table__actions"></th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="zq-table__select"><input type="checkbox" aria-label="Select row"></td>
+            <td>Reflected XSS in <code>/search</code></td><td><span class="zq-badge zq-badge--high">High</span></td>
+            <td class="zq-table__num">7.4</td><td class="zq-table__actions"><button class="zq-btn zq-btn--sm" type="button">Open</button></td></tr>
+          <tr><td class="zq-table__select"><input type="checkbox" aria-label="Select row"></td>
+            <td>Missing HSTS header</td><td><span class="zq-badge zq-badge--low">Low</span></td>
+            <td class="zq-table__num">3.1</td><td class="zq-table__actions"><button class="zq-btn zq-btn--sm" type="button">Open</button></td></tr>
+          <tr><td class="zq-table__select"><input type="checkbox" aria-label="Select row"></td>
+            <td>Auth bypass via IDOR</td><td><span class="zq-badge zq-badge--critical">Critical</span></td>
+            <td class="zq-table__num">9.1</td><td class="zq-table__actions"><button class="zq-btn zq-btn--sm" type="button">Open</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="group-title">tabs</div>
+    <div data-zq-tabs>
+      <div class="zq-tabs" role="tablist" aria-label="Scan sections">
+        <button class="zq-tab" role="tab" id="demo-tab-1" aria-controls="demo-panel-1" aria-selected="true" type="button">Findings</button>
+        <button class="zq-tab" role="tab" id="demo-tab-2" aria-controls="demo-panel-2" aria-selected="false" tabindex="-1" type="button">Evidence</button>
+        <button class="zq-tab" role="tab" id="demo-tab-3" aria-controls="demo-panel-3" aria-selected="false" tabindex="-1" type="button">Chat</button>
+      </div>
+      <div role="tabpanel" id="demo-panel-1" aria-labelledby="demo-tab-1" style="padding-top: var(--zq-space-4)"><p style="margin:0">Findings panel. Arrow keys move between tabs.</p></div>
+      <div role="tabpanel" id="demo-panel-2" aria-labelledby="demo-tab-2" hidden style="padding-top: var(--zq-space-4)"><p style="margin:0">Evidence panel.</p></div>
+      <div role="tabpanel" id="demo-panel-3" aria-labelledby="demo-tab-3" hidden style="padding-top: var(--zq-space-4)"><p style="margin:0">Chat panel.</p></div>
+    </div>
+
+    <div class="group-title">pager</div>
+    <nav class="zq-pager" aria-label="Pagination">
+      <span class="zq-pager__summary">1–25 of 132</span>
+      <div class="zq-pager__pages">
+        <a class="zq-pager__link" href="#data" aria-disabled="true">Prev</a>
+        <a class="zq-pager__link" href="#data" aria-current="page">1</a>
+        <a class="zq-pager__link" href="#data">2</a>
+        <a class="zq-pager__link" href="#data">3</a>
+        <span class="zq-pager__gap">…</span>
+        <a class="zq-pager__link" href="#data">6</a>
+        <a class="zq-pager__link" href="#data">Next</a>
+      </div>
+    </nav>
+
+    <div class="group-title">disclosure + dialog</div>
+    <div class="demo">
+      <button class="zq-btn zq-btn--ghost zq-btn--sm" type="button" data-zq-disclosure aria-controls="demo-adv" aria-expanded="false">Advanced options</button>
+      <button class="zq-btn zq-btn--danger" type="button" data-zq-dialog-open="demo-dialog">Delete scan…</button>
+    </div>
+    <div id="demo-adv" hidden>
+      <div class="zq-notice zq-notice--info"><span class="zq-notice__content"><p class="zq-notice__body">Advanced options appear here when expanded.</p></span></div>
+    </div>
+    <dialog class="zq-dialog" id="demo-dialog" data-zq-dialog>
+      <div class="zq-dialog__header">
+        <h3 class="zq-dialog__title">Delete this scan?</h3>
+        <button class="zq-btn zq-btn--ghost zq-btn--sm" type="button" data-zq-dialog-close>Close</button>
+      </div>
+      <div class="zq-dialog__body"><p style="margin:0">This removes the scan and its artifacts. It cannot be undone.</p></div>
+      <div class="zq-dialog__footer">
+        <button class="zq-btn" type="button" data-zq-dialog-close>Cancel</button>
+        <button class="zq-btn zq-btn--danger" type="button" data-zq-dialog-close>Delete</button>
+      </div>
+    </dialog>
+
+    <div class="group-title">empty · loading · error</div>
+    <div class="demo demo--stack">
+      <div class="zq-empty">
+        <p class="zq-empty__title">No findings yet</p>
+        <p class="zq-empty__body">Run a scan to populate this report.</p>
+        <div class="zq-empty__actions"><button class="zq-btn zq-btn--primary zq-btn--sm" type="button">New scan</button></div>
+      </div>
+      <div class="zq-loading"><span class="zq-spinner"></span> Loading findings…</div>
+      <div class="zq-error">
+        <p class="zq-error__title">Could not load findings</p>
+        <p class="zq-error__body">The request timed out.</p>
+        <button class="zq-btn zq-btn--sm" type="button">Retry</button>
+      </div>
+    </div>
+  </section>
+
   <section>
     <h2>Colour</h2>
     <p>Semantic tokens, resolved live from the active theme. Components reference these — never raw hex.</p>
@@ -254,5 +342,6 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
 renderColour();
 renderScales();
 </script>
+<script src="../dist/zeroquarry-ui.js" defer></script>
 </body>
 </html>

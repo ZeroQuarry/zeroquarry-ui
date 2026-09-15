@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "node scripts/build-tokens.mjs && node scripts/build-css.mjs",
+    "build": "node scripts/build-tokens.mjs && node scripts/build-css.mjs && node scripts/build-js.mjs",
     "lint": "node scripts/lint-css.mjs",
     "docs": "node scripts/serve-docs.mjs"
   },

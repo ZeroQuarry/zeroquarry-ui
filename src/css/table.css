@@ -1,0 +1,35 @@
+/* Table — the shared data table. Wrap in .zq-table-wrap for horizontal scroll.
+   Modifiers: --compact  Parts: __num __select __actions */
+
+.zq-table-wrap {
+  overflow-x: auto;
+  border: var(--zq-border-width-hairline) solid var(--zq-color-border-base);
+  border-radius: var(--zq-radius-lg);
+  background: var(--zq-color-bg-surface);
+}
+.zq-table { width: 100%; border-collapse: collapse; font-size: var(--zq-font-size-3); color: var(--zq-color-text-base); }
+.zq-table th,
+.zq-table td {
+  text-align: left;
+  vertical-align: middle;
+  padding: var(--zq-space-3) var(--zq-space-4);
+  border-bottom: var(--zq-border-width-hairline) solid var(--zq-color-border-subtle);
+}
+.zq-table thead th {
+  font-family: var(--zq-font-family-mono);
+  font-size: var(--zq-font-size-0);
+  font-weight: var(--zq-font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--zq-font-tracking-caps);
+  color: var(--zq-color-text-muted);
+  border-bottom-color: var(--zq-color-border-base);
+  white-space: nowrap;
+}
+.zq-table tbody tr:last-child td { border-bottom: 0; }
+.zq-table tbody tr:hover { background: var(--zq-color-bg-hover); }
+.zq-table--compact th,
+.zq-table--compact td { padding: var(--zq-space-2) var(--zq-space-3); }
+
+.zq-table__num { text-align: right; font-family: var(--zq-font-family-mono); font-variant-numeric: tabular-nums; }
+.zq-table__select { width: 1%; white-space: nowrap; }
+.zq-table__actions { text-align: right; white-space: nowrap; }

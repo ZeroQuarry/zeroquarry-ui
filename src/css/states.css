@@ -1,0 +1,54 @@
+/* States — empty / loading / error placeholders, so no page invents its own.
+   Parts: .zq-empty__icon/__title/__body/__actions · .zq-error__title/__body · .zq-spinner */
+
+.zq-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--zq-space-2);
+  padding: var(--zq-space-10) var(--zq-space-5);
+  border: var(--zq-border-width-hairline) dashed var(--zq-color-border-base);
+  border-radius: var(--zq-radius-lg);
+  color: var(--zq-color-text-muted);
+}
+.zq-empty__icon { font-size: var(--zq-font-size-8); line-height: 1; }
+.zq-empty__title { margin: 0; font-size: var(--zq-font-size-4); font-weight: var(--zq-font-weight-semibold); color: var(--zq-color-text-heading); }
+.zq-empty__body { margin: 0; max-width: 46ch; }
+.zq-empty__actions { display: flex; gap: var(--zq-space-2); margin-top: var(--zq-space-2); }
+
+.zq-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--zq-space-3);
+  padding: var(--zq-space-10);
+  color: var(--zq-color-text-muted);
+  font-size: var(--zq-font-size-3);
+}
+.zq-spinner {
+  width: var(--zq-space-5);
+  height: var(--zq-space-5);
+  border: var(--zq-border-width-thick) solid var(--zq-color-border-base);
+  border-top-color: var(--zq-color-accent-base);
+  border-radius: var(--zq-radius-circle);
+  animation: zq-spin var(--zq-motion-duration-slow) linear infinite;
+}
+@keyframes zq-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .zq-spinner { animation-duration: calc(var(--zq-motion-duration-slow) * 4); }
+}
+
+.zq-error {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--zq-space-2);
+  padding: var(--zq-space-5);
+  border: var(--zq-border-width-hairline) solid var(--zq-color-notice-error-border);
+  border-radius: var(--zq-radius-lg);
+  background: var(--zq-color-notice-error-bg);
+  color: var(--zq-color-status-danger);
+}
+.zq-error__title { margin: 0; font-weight: var(--zq-font-weight-semibold); }
+.zq-error__body { margin: 0; }
