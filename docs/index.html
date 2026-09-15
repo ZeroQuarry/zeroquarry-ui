@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>zeroquarry-ui — design tokens</title>
+<link rel="stylesheet" href="../dist/tokens.css">
+<style>
+  :root { color-scheme: dark; }
+  [data-theme="light"] { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--zq-color-bg-body); color: var(--zq-color-text-base);
+    font-family: var(--zq-font-family-sans); font-size: var(--zq-font-size-4); line-height: var(--zq-font-leading-normal);
+  }
+  header {
+    position: sticky; top: 0; z-index: var(--zq-z-sticky);
+    display: flex; align-items: baseline; gap: var(--zq-space-4);
+    padding: var(--zq-space-5) var(--zq-space-8);
+    background: var(--zq-color-bg-surface); border-bottom: 1px solid var(--zq-color-border-base);
+  }
+  h1 { font-size: var(--zq-font-size-6); font-weight: var(--zq-font-weight-semibold); margin: 0; letter-spacing: var(--zq-font-tracking-tight); }
+  header .meta { color: var(--zq-color-text-muted); font-size: var(--zq-font-size-2); }
+  header .spacer { flex: 1; }
+  button {
+    font: inherit; font-size: var(--zq-font-size-2); color: var(--zq-color-text-base);
+    background: var(--zq-color-control-bg); border: 1px solid var(--zq-color-control-border);
+    border-radius: var(--zq-radius-md); padding: var(--zq-space-2) var(--zq-space-3); cursor: pointer;
+  }
+  button:hover { background: var(--zq-color-control-hover); }
+  main { max-width: 1100px; margin: 0 auto; padding: var(--zq-space-8); }
+  section { margin-bottom: var(--zq-space-12); }
+  h2 { font-size: var(--zq-font-size-5); font-weight: var(--zq-font-weight-semibold); margin: 0 0 var(--zq-space-1); }
+  h2 + p { margin: 0 0 var(--zq-space-5); color: var(--zq-color-text-muted); font-size: var(--zq-font-size-2); }
+  .group-title { font-family: var(--zq-font-family-mono); font-size: var(--zq-font-size-1); text-transform: uppercase;
+    letter-spacing: var(--zq-font-tracking-caps); color: var(--zq-color-text-muted); margin: var(--zq-space-5) 0 var(--zq-space-2); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: var(--zq-space-3); }
+  .swatch { display: flex; align-items: center; gap: var(--zq-space-3); padding: var(--zq-space-2);
+    border: 1px solid var(--zq-color-border-subtle); border-radius: var(--zq-radius-md); background: var(--zq-color-bg-surface); }
+  .chip { width: 34px; height: 34px; border-radius: var(--zq-radius-sm); flex: none;
+    border: 1px solid var(--zq-color-border-base); background-color: transparent; }
+  .swatch .name { font-family: var(--zq-font-family-mono); font-size: var(--zq-font-size-1); }
+  .swatch .val { color: var(--zq-color-text-muted); font-family: var(--zq-font-family-mono); font-size: var(--zq-font-size-0); }
+  table { border-collapse: collapse; width: 100%; font-size: var(--zq-font-size-2); }
+  th, td { text-align: left; padding: var(--zq-space-2) var(--zq-space-3); border-bottom: 1px solid var(--zq-color-border-subtle); vertical-align: middle; }
+  th { font-family: var(--zq-font-family-mono); font-size: var(--zq-font-size-0); text-transform: uppercase;
+    letter-spacing: var(--zq-font-tracking-caps); color: var(--zq-color-text-muted); font-weight: var(--zq-font-weight-medium); }
+  td.tok { font-family: var(--zq-font-family-mono); font-size: var(--zq-font-size-1); color: var(--zq-color-text-muted); white-space: nowrap; }
+  .bar { height: 14px; background: var(--zq-color-accent-base); border-radius: var(--zq-radius-xs); }
+  .type-row span { display: block; }
+  code { font-family: var(--zq-font-family-mono); }
+</style>
+</head>
+<body>
+<header>
+  <h1>zeroquarry-ui</h1>
+  <span class="meta">design tokens · v0.1.0 — generated from <code>tokens/*.json</code></span>
+  <span class="spacer"></span>
+  <button id="theme-toggle" type="button">Toggle light / dark</button>
+</header>
+<main>
+  <section>
+    <h2>Colour</h2>
+    <p>Semantic tokens, resolved live from the active theme. Components reference these — never raw hex.</p>
+    <div id="colour"></div>
+  </section>
+  <section>
+    <h2>Spacing</h2>
+    <p>4&nbsp;px-based scale. All layout gaps and padding come from here.</p>
+    <table><tbody id="space"></tbody></table>
+  </section>
+  <section>
+    <h2>Radius</h2>
+    <table><tbody id="radius"></tbody></table>
+  </section>
+  <section>
+    <h2>Typography</h2>
+    <table><tbody id="type"></tbody></table>
+  </section>
+  <section>
+    <h2>Elevation &amp; motion</h2>
+    <table><tbody id="motion"></tbody></table>
+  </section>
+</main>
+<script>
+const css = getComputedStyle(document.documentElement);
+const val = (n) => css.getPropertyValue(n).trim();
+
+const COLOUR_GROUPS = {
+  "surface": ["bg-body","bg-surface","bg-surface-2","bg-inset","bg-hover","bg-highlight"],
+  "border": ["border-base","border-subtle"],
+  "text": ["text-base","text-heading","text-muted","text-code"],
+  "accent / link": ["accent-base","accent-hover","accent-contrast","accent-soft","link-base"],
+  "control": ["control-bg","control-border","control-hover","control-input-bg","control-input-border"],
+  "status": ["status-success","status-warning","status-danger"],
+  "notice": ["notice-warn-bg","notice-warn-border","notice-warn-text","notice-error-bg","notice-error-border"],
+  "severity": ["severity-critical-bg","severity-critical-fg","severity-high-bg","severity-high-fg",
+               "severity-medium-bg","severity-medium-fg","severity-low-bg","severity-low-fg",
+               "severity-info-bg","severity-info-fg"],
+  "brand": ["brand-node"],
+};
+
+function renderColour() {
+  const host = document.getElementById("colour");
+  host.innerHTML = "";
+  for (const [group, names] of Object.entries(COLOUR_GROUPS)) {
+    const h = document.createElement("div");
+    h.className = "group-title"; h.textContent = group; host.appendChild(h);
+    const grid = document.createElement("div"); grid.className = "grid";
+    for (const n of names) {
+      const token = "--zq-color-" + n;
+      const raw = val(token);
+      const el = document.createElement("div"); el.className = "swatch";
+      el.innerHTML =
+        `<span class="chip" style="background-color: var(${token})"></span>` +
+        `<span><span class="name">color.${n}</span><br><span class="val">${raw || "—"}</span></span>`;
+      grid.appendChild(el);
+    }
+    host.appendChild(grid);
+  }
+}
+
+function table(hostId, rows) {
+  const tb = document.getElementById(hostId); tb.innerHTML = "";
+  for (const [label, token, preview] of rows) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td class="tok">${label}</td><td class="tok">${token} · ${val(token) || "—"}</td><td>${preview}</td>`;
+    tb.appendChild(tr);
+  }
+}
+
+const SPACE = ["0","1","2","3","4","5","6","7","8","10","12","16"];
+const RADIUS = ["none","xs","sm","md","lg","xl","pill","circle"];
+const SIZES = ["0","1","2","3","4","5","6","7","8","9","10"];
+const LEADING = ["tight","snug","normal","relaxed"];
+const WEIGHT = ["regular","medium","semibold","bold"];
+const MOTION = [["duration","fast"],["duration","normal"],["duration","slow"],["easing","standard"],["easing","decelerate"]];
+
+function renderScales() {
+  table("space", SPACE.map((s) => {
+    const t = `--zq-space-${s}`;
+    return [`.space-${s}`, t, `<span class="bar" style="width:${val(t)}"></span>`];
+  }));
+  table("radius", RADIUS.map((r) => {
+    const t = `--zq-radius-${r}`;
+    return [`.radius-${r}`, t, `<span class="chip" style="background:var(--zq-color-bg-highlight);border-radius:${val(t)}"></span>`];
+  }));
+  table("type", [
+    ...SIZES.map((s) => {
+      const t = `--zq-font-size-${s}`;
+      return [`.text-${s}`, t, `<span class="type-row" style="font-size:${val(t)}">The quick brown fox</span>`];
+    }),
+    ...WEIGHT.map((w) => {
+      const t = `--zq-font-weight-${w}`;
+      return [`weight-${w}`, t, `<span style="font-weight:${val(t)}">The quick brown fox</span>`];
+    }),
+    ...LEADING.map((l) => {
+      const t = `--zq-font-leading-${l}`;
+      return [`leading-${l}`, t, `<span style="line-height:${val(t)}">The quick brown fox jumps over the lazy dog.</span>`];
+    }),
+  ]);
+  table("motion", [
+    ...MOTION.map(([k, n]) => {
+      const t = `--zq-motion-${k}-${n}`;
+      return [`motion-${k}-${n}`, t, ""];
+    }),
+    ...["none","sm","md","lg"].map((s) => {
+      const t = `--zq-shadow-${s}`;
+      return [`shadow-${s}`, t, `<span class="chip" style="background:var(--zq-color-bg-surface);box-shadow:${val(t)}"></span>`];
+    }),
+  ]);
+}
+
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  const html = document.documentElement;
+  html.dataset.theme = html.dataset.theme === "light" ? "dark" : "light";
+  renderColour();
+  renderScales();
+});
+
+renderColour();
+renderScales();
+</script>
+</body>
+</html>
