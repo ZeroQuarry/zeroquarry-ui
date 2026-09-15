@@ -1,0 +1,76 @@
+/* Button — the one button primitive.
+   Variants  : default (secondary), --primary, --danger, --ghost, --ghost-danger
+   Sizes     : default, --sm
+   Modifiers : --block
+   Every value maps to a --zq-* token; never hard-code colour or size. */
+
+.zq-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--zq-space-2);
+  font-family: inherit;
+  font-size: var(--zq-font-size-3);
+  font-weight: var(--zq-font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+  padding: var(--zq-space-3) var(--zq-space-4);
+  border: var(--zq-border-width-hairline) solid var(--zq-color-control-border);
+  border-radius: var(--zq-radius-md);
+  background: var(--zq-color-control-bg);
+  color: var(--zq-color-text-base);
+  cursor: pointer;
+  transition: background var(--zq-motion-duration-fast) var(--zq-motion-easing-standard),
+              border-color var(--zq-motion-duration-fast) var(--zq-motion-easing-standard),
+              color var(--zq-motion-duration-fast) var(--zq-motion-easing-standard);
+}
+.zq-btn:hover { background: var(--zq-color-control-hover); }
+.zq-btn:focus-visible { outline: 2px solid var(--zq-color-accent-base); outline-offset: 2px; }
+.zq-btn:disabled,
+.zq-btn[aria-disabled="true"] {
+  opacity: var(--zq-opacity-disabled);
+  cursor: not-allowed;
+}
+
+.zq-btn--primary {
+  background: var(--zq-color-accent-base);
+  border-color: var(--zq-color-accent-base);
+  color: var(--zq-color-accent-contrast);
+}
+.zq-btn--primary:hover {
+  background: var(--zq-color-accent-hover);
+  border-color: var(--zq-color-accent-hover);
+}
+
+.zq-btn--danger {
+  background: var(--zq-color-status-danger);
+  border-color: var(--zq-color-status-danger);
+  color: var(--zq-color-accent-contrast);
+}
+.zq-btn--danger:hover {
+  background: color-mix(in srgb, var(--zq-color-status-danger) 85%, var(--zq-color-bg-inset));
+  border-color: color-mix(in srgb, var(--zq-color-status-danger) 85%, var(--zq-color-bg-inset));
+}
+
+.zq-btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--zq-color-link-base);
+}
+.zq-btn--ghost:hover { background: var(--zq-color-bg-hover); }
+
+.zq-btn--ghost-danger {
+  background: transparent;
+  border-color: transparent;
+  color: var(--zq-color-status-danger);
+}
+.zq-btn--ghost-danger:hover {
+  background: color-mix(in srgb, var(--zq-color-status-danger) 12%, transparent);
+}
+
+.zq-btn--sm { font-size: var(--zq-font-size-2); padding: var(--zq-space-2) var(--zq-space-3); }
+.zq-btn--block { width: 100%; }
+
+.zq-btn__icon { display: inline-flex; align-items: center; font-size: 1.15em; line-height: 1; }

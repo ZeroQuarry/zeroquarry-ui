@@ -1,0 +1,33 @@
+/* Badge / severity chip — one primitive for every label-shaped status.
+   Variants: --critical --high --medium --low --info --success --neutral */
+
+.zq-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--zq-space-1);
+  font-size: var(--zq-font-size-1);
+  font-weight: var(--zq-font-weight-semibold);
+  line-height: 1;
+  padding: var(--zq-space-1) var(--zq-space-2);
+  border: var(--zq-border-width-hairline) solid transparent;
+  border-radius: var(--zq-radius-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--zq-font-tracking-wide);
+  white-space: nowrap;
+}
+
+.zq-badge--critical { background: var(--zq-color-severity-critical-bg); color: var(--zq-color-severity-critical-fg); }
+.zq-badge--high     { background: var(--zq-color-severity-high-bg);     color: var(--zq-color-severity-high-fg); }
+.zq-badge--medium   { background: var(--zq-color-severity-medium-bg);   color: var(--zq-color-severity-medium-fg); }
+.zq-badge--low      { background: var(--zq-color-severity-low-bg);      color: var(--zq-color-severity-low-fg); }
+.zq-badge--info     { background: var(--zq-color-severity-info-bg);     color: var(--zq-color-severity-info-fg); }
+
+.zq-badge--success {
+  background: color-mix(in srgb, var(--zq-color-status-success) 18%, transparent);
+  color: var(--zq-color-status-success);
+}
+.zq-badge--neutral {
+  background: var(--zq-color-bg-surface-2);
+  color: var(--zq-color-text-muted);
+  border-color: var(--zq-color-border-subtle);
+}

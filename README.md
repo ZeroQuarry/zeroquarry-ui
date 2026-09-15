@@ -86,6 +86,25 @@ npm run docs    # serve the style guide at http://localhost:4173/docs/
 No dependencies, no `node_modules`. Node ≥18 only. The docs page also opens
 directly from disk (double-click `docs/index.html`).
 
+## Components
+
+All components are prefixed `.zq-` (so they can coexist with the app's existing
+class names during migration) and reference tokens only — `npm run lint` fails
+the build if a component hard-codes a colour or references an undefined token.
+
+| Component | Class | Variants / parts |
+|---|---|---|
+| Button | `.zq-btn` | `--primary --danger --ghost --ghost-danger --sm --block`, `__icon` |
+| Card | `.zq-card` | `__header __titles __title __subtitle __actions __body __footer`, `--interactive` |
+| Badge / severity chip | `.zq-badge` | `--critical --high --medium --low --info --success --neutral` |
+| Notice | `.zq-notice` | `--info --success --warning --danger`, `__icon __content __title __body __actions` |
+| Page header | `.zq-page-header` | `__titles __title __subtitle __meta __actions` |
+
+```bash
+npm run build   # tokens + bundle
+npm run lint    # no raw colours, no undefined tokens, namespaced classes
+```
+
 ## How ZeroQuarry consumes it (planned)
 
 Build, then vendor the output into the app and reference it before the app's
@@ -93,7 +112,7 @@ own stylesheet, migrating one component at a time:
 
 ```bash
 npm run build
-cp dist/tokens.css ../ZeroQuarry/static/vendor/zeroquarry-ui/tokens.css
+cp dist/zeroquarry-ui.css ../ZeroQuarry/static/vendor/zeroquarry-ui/zeroquarry-ui.css
 ```
 
 Migration is deliberately incremental: introduce tokens, then replace one
@@ -104,8 +123,8 @@ keeps the app side honest while this lands.
 ## Roadmap
 
 - [x] **Increment 1 — foundation**: repo, token pipeline, living style guide.
-- [ ] **Increment 2 — primitives**: button, card, badge/severity chip, notice,
-      page header (CSS layer + docs).
+- [x] **Increment 2 — primitives**: button, card, badge/severity chip, notice,
+      page header (CSS layer + docs + craft guard).
 - [ ] **Increment 3 — data display**: table, tabs, pager, empty/loading/error
       states + the first JS behaviours.
 - [ ] **Increment 4 — adoption**: vendor into ZeroQuarry and migrate page by

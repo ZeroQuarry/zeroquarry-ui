@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>zeroquarry-ui — design tokens</title>
-<link rel="stylesheet" href="../dist/tokens.css">
+<link rel="stylesheet" href="../dist/zeroquarry-ui.css">
 <style>
   :root { color-scheme: dark; }
   [data-theme="light"] { color-scheme: light; }
@@ -49,6 +49,9 @@
   .bar { height: 14px; background: var(--zq-color-accent-base); border-radius: var(--zq-radius-xs); }
   .type-row span { display: block; }
   code { font-family: var(--zq-font-family-mono); }
+  .demo { display: flex; flex-wrap: wrap; align-items: center; gap: var(--zq-space-3); margin-bottom: var(--zq-space-4); }
+  .demo--stack { flex-direction: column; align-items: stretch; }
+  .demo--grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); align-items: start; }
 </style>
 </head>
 <body>
@@ -59,6 +62,76 @@
   <button id="theme-toggle" type="button">Toggle light / dark</button>
 </header>
 <main>
+
+  <section id="components">
+    <h2>Components</h2>
+    <p>Primitives built only from tokens. Namespaced <code>.zq-</code> so they can sit beside the app's existing styles during migration.</p>
+
+    <div class="group-title">button</div>
+    <div class="demo">
+      <button class="zq-btn" type="button">Secondary</button>
+      <button class="zq-btn zq-btn--primary" type="button">Primary</button>
+      <button class="zq-btn zq-btn--danger" type="button">Danger</button>
+      <button class="zq-btn zq-btn--ghost" type="button">Ghost</button>
+      <button class="zq-btn zq-btn--ghost-danger" type="button">Remove</button>
+      <button class="zq-btn zq-btn--sm" type="button">Small</button>
+      <button class="zq-btn" type="button" disabled>Disabled</button>
+    </div>
+
+    <div class="group-title">badge</div>
+    <div class="demo">
+      <span class="zq-badge zq-badge--critical">Critical</span>
+      <span class="zq-badge zq-badge--high">High</span>
+      <span class="zq-badge zq-badge--medium">Medium</span>
+      <span class="zq-badge zq-badge--low">Low</span>
+      <span class="zq-badge zq-badge--info">Info</span>
+      <span class="zq-badge zq-badge--success">Verified</span>
+      <span class="zq-badge zq-badge--neutral">Draft</span>
+    </div>
+
+    <div class="group-title">notice</div>
+    <div class="demo demo--stack">
+      <div class="zq-notice zq-notice--info"><span class="zq-notice__content"><p class="zq-notice__title">Heads up</p><p class="zq-notice__body">A newer revision of this scan is available.</p></span></div>
+      <div class="zq-notice zq-notice--success"><span class="zq-notice__content"><p class="zq-notice__title">Scan complete</p><p class="zq-notice__body">12 findings across 3 severity levels.</p></span></div>
+      <div class="zq-notice zq-notice--warning"><span class="zq-notice__content"><p class="zq-notice__title">Not enough security runs</p><p class="zq-notice__body">3 of 5 used this month. Deleting a scan does not return its runs.</p></span></div>
+      <div class="zq-notice zq-notice--danger"><span class="zq-notice__content"><p class="zq-notice__title">Could not reach the runner</p><p class="zq-notice__body">The private runner did not respond in time.</p></span></div>
+    </div>
+
+    <div class="group-title">card</div>
+    <div class="demo demo--grid">
+      <div class="zq-card">
+        <div class="zq-card__header">
+          <div class="zq-card__titles">
+            <h3 class="zq-card__title">Scan summary</h3>
+            <p class="zq-card__subtitle">example.com · remote</p>
+          </div>
+          <div class="zq-card__actions"><span class="zq-badge zq-badge--high">High</span></div>
+        </div>
+        <div class="zq-card__body"><p style="margin:0">4 findings, 2 awaiting triage. Last run 8 minutes ago.</p></div>
+        <div class="zq-card__footer"><button class="zq-btn zq-btn--sm zq-btn--primary" type="button">Open report</button><button class="zq-btn zq-btn--sm" type="button">Rescan</button></div>
+      </div>
+      <a class="zq-card zq-card--interactive" href="#components">
+        <div class="zq-card__header"><div class="zq-card__titles"><h3 class="zq-card__title">Interactive card</h3><p class="zq-card__subtitle">whole card is the target</p></div></div>
+        <div class="zq-card__body"><p style="margin:0">Hover to see the surface lift.</p></div>
+      </a>
+    </div>
+
+    <div class="group-title">page header</div>
+    <div class="demo demo--stack">
+      <header class="zq-page-header">
+        <div class="zq-page-header__titles">
+          <h1 class="zq-page-header__title">Acme Corp</h1>
+          <p class="zq-page-header__subtitle">Projects, scans and findings for this account.</p>
+          <p class="zq-page-header__meta"><span>acct_9f3c</span><span>Operations tier</span></p>
+        </div>
+        <div class="zq-page-header__actions">
+          <button class="zq-btn zq-btn--sm" type="button">Share</button>
+          <button class="zq-btn zq-btn--sm zq-btn--primary" type="button">New scan</button>
+        </div>
+      </header>
+    </div>
+  </section>
+
   <section>
     <h2>Colour</h2>
     <p>Semantic tokens, resolved live from the active theme. Components reference these — never raw hex.</p>

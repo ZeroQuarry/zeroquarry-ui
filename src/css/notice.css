@@ -1,0 +1,42 @@
+/* Notice — inline banner for feedback, warnings and empty/error states.
+   Variants: --info --success --warning --danger
+   Parts   : __icon __content __title __body __actions */
+
+.zq-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--zq-space-3);
+  padding: var(--zq-space-3) var(--zq-space-4);
+  font-size: var(--zq-font-size-3);
+  border: var(--zq-border-width-hairline) solid var(--zq-color-border-base);
+  border-radius: var(--zq-radius-md);
+  background: var(--zq-color-bg-surface-2);
+  color: var(--zq-color-text-base);
+}
+.zq-notice__icon { flex: none; display: inline-flex; align-items: center; font-size: 1.15em; line-height: 1.4; }
+.zq-notice__content { min-width: 0; flex: 1; }
+.zq-notice__title { margin: 0; font-weight: var(--zq-font-weight-semibold); }
+.zq-notice__body { margin: 0; }
+.zq-notice__title + .zq-notice__body { margin-top: var(--zq-space-1); }
+.zq-notice__actions { display: flex; gap: var(--zq-space-2); flex: none; align-items: center; }
+
+.zq-notice--info {
+  background: var(--zq-color-severity-info-bg);
+  border-color: color-mix(in srgb, var(--zq-color-severity-info-fg) 40%, transparent);
+  color: var(--zq-color-severity-info-fg);
+}
+.zq-notice--success {
+  background: color-mix(in srgb, var(--zq-color-status-success) 14%, transparent);
+  border-color: color-mix(in srgb, var(--zq-color-status-success) 45%, transparent);
+  color: var(--zq-color-status-success);
+}
+.zq-notice--warning {
+  background: var(--zq-color-notice-warn-bg);
+  border-color: var(--zq-color-notice-warn-border);
+  color: var(--zq-color-notice-warn-text);
+}
+.zq-notice--danger {
+  background: var(--zq-color-notice-error-bg);
+  border-color: var(--zq-color-notice-error-border);
+  color: var(--zq-color-status-danger);
+}

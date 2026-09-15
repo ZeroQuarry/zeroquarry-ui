@@ -1,0 +1,42 @@
+/* Page header — one primitive to replace the per-page <h1> layouts.
+   Parts: __titles __title __subtitle __meta __actions
+   NOTE: media queries cannot read custom properties, so the 560px here is
+   the literal of --zq-breakpoint-sm. Keep the two in sync. */
+
+.zq-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--zq-space-4);
+  padding-bottom: var(--zq-space-4);
+  margin-bottom: var(--zq-space-5);
+  border-bottom: var(--zq-border-width-hairline) solid var(--zq-color-border-subtle);
+}
+.zq-page-header__titles { min-width: 0; }
+.zq-page-header__title {
+  margin: 0;
+  font-size: var(--zq-font-size-6);
+  font-weight: var(--zq-font-weight-semibold);
+  letter-spacing: var(--zq-font-tracking-tight);
+  color: var(--zq-color-text-heading);
+}
+.zq-page-header__subtitle {
+  margin: var(--zq-space-1) 0 0;
+  font-size: var(--zq-font-size-3);
+  color: var(--zq-color-text-muted);
+}
+.zq-page-header__meta {
+  margin: var(--zq-space-2) 0 0;
+  display: flex;
+  align-items: center;
+  gap: var(--zq-space-3);
+  font-family: var(--zq-font-family-mono);
+  font-size: var(--zq-font-size-1);
+  color: var(--zq-color-text-muted);
+}
+.zq-page-header__actions { display: flex; align-items: center; gap: var(--zq-space-2); flex: none; }
+
+@media (max-width: 560px) {
+  .zq-page-header { flex-direction: column; }
+  .zq-page-header__actions { width: 100%; }
+}

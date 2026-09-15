@@ -99,5 +99,9 @@
     "overlay": "1000",
     "modal": "1100",
     "toast": "1200"
+  },
+  "opacity": {
+    "disabled": "0.5",
+    "muted": "0.7"
   }
 }
