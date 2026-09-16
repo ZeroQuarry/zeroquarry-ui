@@ -1,0 +1,27 @@
+/* Stat tile — a labelled number at a glance (scan counts, usage totals).
+   Parts: __value __label. Lay tiles out in a flex/grid row on the page;
+   the tile itself only styles one. */
+
+.zq-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--zq-space-1);
+  min-width: 5rem;
+  padding: var(--zq-space-3) var(--zq-space-5);
+  background: var(--zq-color-bg-surface-2);
+  border: var(--zq-border-width-hairline) solid var(--zq-color-border-base);
+  border-radius: var(--zq-radius-md);
+}
+.zq-stat__value {
+  font-size: var(--zq-font-size-5);
+  font-weight: var(--zq-font-weight-bold);
+  line-height: 1.1;
+  color: var(--zq-color-text-heading);
+}
+.zq-stat__label {
+  font-size: var(--zq-font-size-0);
+  text-transform: uppercase;
+  letter-spacing: var(--zq-font-tracking-caps);
+  color: var(--zq-color-text-muted);
+}

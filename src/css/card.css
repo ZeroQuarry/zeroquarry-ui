@@ -49,3 +49,8 @@
 }
 .zq-card--interactive:hover { background: var(--zq-color-bg-hover); border-color: var(--zq-color-border-base); }
 .zq-card--interactive:focus-visible { outline: 2px solid var(--zq-color-accent-base); outline-offset: 2px; }
+
+/* --danger — destructive-zone cards (account deletion, key revocation). */
+.zq-card--danger {
+  border-color: color-mix(in srgb, var(--zq-color-status-danger) 45%, transparent);
+}

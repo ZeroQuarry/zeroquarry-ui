@@ -1,0 +1,57 @@
+/* Form controls — the one input/select/textarea/label treatment.
+   The app previously re-styled these per form family; pages opt in by
+   classing the control (.zq-input / .zq-select / .zq-textarea) and the
+   label (.zq-label). __hint sits under a control; .zq-checkbox is an
+   inline label+control row. */
+
+.zq-input,
+.zq-select,
+.zq-textarea {
+  display: block;
+  width: 100%;
+  padding: var(--zq-space-2) var(--zq-space-3);
+  background: var(--zq-color-control-bg);
+  border: var(--zq-border-width-hairline) solid var(--zq-color-control-border);
+  border-radius: var(--zq-radius-md);
+  color: var(--zq-color-text-base);
+  font: inherit;
+  font-size: var(--zq-font-size-3);
+}
+.zq-textarea {
+  font-family: var(--zq-font-family-mono);
+  font-size: var(--zq-font-size-2);
+  min-height: 6em;
+  resize: vertical;
+}
+.zq-input:focus-visible,
+.zq-select:focus-visible,
+.zq-textarea:focus-visible {
+  outline: 2px solid var(--zq-color-accent-base);
+  outline-offset: -1px;
+}
+.zq-input[disabled],
+.zq-select[disabled],
+.zq-textarea[disabled],
+.zq-input[aria-disabled="true"],
+.zq-select[aria-disabled="true"],
+.zq-textarea[aria-disabled="true"] {
+  opacity: var(--zq-opacity-disabled);
+  cursor: not-allowed;
+}
+
+.zq-label {
+  display: block;
+  margin-bottom: var(--zq-space-2);
+  font-weight: var(--zq-font-weight-medium);
+}
+.zq-hint {
+  margin: var(--zq-space-1) 0 0;
+  font-size: var(--zq-font-size-2);
+  color: var(--zq-color-text-muted);
+}
+
+.zq-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--zq-space-2);
+}

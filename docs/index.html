@@ -185,6 +185,32 @@
       </div>
     </nav>
 
+    <div class="group-title">breadcrumbs</div>
+    <nav class="zq-breadcrumbs" aria-label="Breadcrumb">
+      <a class="zq-breadcrumbs__item" href="#breadcrumbs">Acme Corp</a>
+      <a class="zq-breadcrumbs__item" href="#breadcrumbs">Scan #42</a>
+      <span class="zq-breadcrumbs__item" aria-current="page">Finding XSS-7</span>
+    </nav>
+
+    <div class="group-title">stat</div>
+    <div class="demo">
+      <div class="zq-stat"><span class="zq-stat__value">132</span><span class="zq-stat__label">Findings</span></div>
+      <div class="zq-stat"><span class="zq-stat__value">7</span><span class="zq-stat__label">Critical</span></div>
+      <div class="zq-stat"><span class="zq-stat__value">98.2%</span><span class="zq-stat__label">Coverage</span></div>
+    </div>
+
+    <div class="group-title">form controls</div>
+    <div class="demo demo--stack">
+      <label class="zq-label" for="demo-input">Target URL</label>
+      <input class="zq-input" id="demo-input" type="url" placeholder="https://example.test">
+      <label class="zq-label" for="demo-select">Scan mode</label>
+      <select class="zq-select" id="demo-select"><option>Grey box</option><option>Black box</option></select>
+      <label class="zq-label" for="demo-textarea">Notes</label>
+      <textarea class="zq-textarea" id="demo-textarea" placeholder="Scope notes, credentials, caveats…"></textarea>
+      <p class="zq-hint">Hint text sits under the control it describes.</p>
+      <label class="zq-checkbox"><input type="checkbox"> Email me the report when the scan finishes</label>
+    </div>
+
     <div class="group-title">disclosure + dialog</div>
     <div class="demo">
       <button class="zq-btn zq-btn--ghost zq-btn--sm" type="button" data-zq-disclosure aria-controls="demo-adv" aria-expanded="false">Advanced options</button>
