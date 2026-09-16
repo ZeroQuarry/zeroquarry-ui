@@ -4,11 +4,6 @@ The ZeroQuarry **design system**: a single source of truth for colour, type,
 space and components, packaged so it can be reused across every ZeroQuarry
 surface and iterated on independently of the application.
 
-Inspired by the way [Elastic EUI](https://eui.elastic.co/) and the
-[Vectara UI](https://vectara.github.io/vectara-ui/) libraries are structured —
-but **framework-agnostic**, because ZeroQuarry's product UI is server-rendered
-Jinja2 + vanilla JS, not React.
-
 ## Why a separate repo
 
 The app grew a large, organically-extended stylesheet (`ZeroQuarry/static/style.css`,
