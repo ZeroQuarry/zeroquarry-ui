@@ -1,5 +1,6 @@
 /* Badge / severity chip — one primitive for every label-shaped status.
-   Variants: --critical --high --medium --low --info --success --neutral */
+   Variants: --critical --high --medium --low --info --success --warning
+             --neutral --danger */
 
 .zq-badge {
   display: inline-flex;
@@ -34,4 +35,10 @@
   background: var(--zq-color-bg-surface-2);
   color: var(--zq-color-text-muted);
   border-color: var(--zq-color-border-subtle);
+}
+/* Semantic danger for non-severity error states (failed, revoked,
+   integrity-failed); visually the critical ramp. */
+.zq-badge--danger {
+  background: var(--zq-color-severity-critical-bg);
+  color: var(--zq-color-severity-critical-fg);
 }
