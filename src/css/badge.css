@@ -26,6 +26,10 @@
   background: color-mix(in srgb, var(--zq-color-status-success) 18%, transparent);
   color: var(--zq-color-status-success);
 }
+.zq-badge--warning {
+  background: color-mix(in srgb, var(--zq-color-status-warning) 18%, transparent);
+  color: var(--zq-color-status-warning);
+}
 .zq-badge--neutral {
   background: var(--zq-color-bg-surface-2);
   color: var(--zq-color-text-muted);
