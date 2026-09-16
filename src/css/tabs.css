@@ -5,6 +5,7 @@
 .zq-tabs {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--zq-space-5);
   border-bottom: var(--zq-border-width-hairline) solid var(--zq-color-border-base);
 }
