@@ -24,7 +24,11 @@
   white-space: nowrap;
 }
 .zq-tab:hover { color: var(--zq-color-text-base); }
-.zq-tab[aria-selected="true"] {
+/* ARIA tabs mark the active tab with aria-selected; a nav strip of plain
+   links (server-rendered section navs) marks it with aria-current="page".
+   Support both so one primitive serves either. */
+.zq-tab[aria-selected="true"],
+.zq-tab[aria-current="page"] {
   color: var(--zq-color-text-heading);
   border-bottom-color: var(--zq-color-accent-base);
 }
@@ -37,7 +41,8 @@
   border-radius: var(--zq-radius-md);
   margin-bottom: 0;
 }
-.zq-tabs--pills .zq-tab[aria-selected="true"] {
+.zq-tabs--pills .zq-tab[aria-selected="true"],
+.zq-tabs--pills .zq-tab[aria-current="page"] {
   background: var(--zq-color-bg-surface-2);
   border-color: var(--zq-color-border-base);
   color: var(--zq-color-text-heading);
