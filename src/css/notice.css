@@ -1,6 +1,7 @@
 /* Notice — inline banner for feedback, warnings and empty/error states.
-   Variants: --info --success --warning --danger
-   Parts   : __icon __content __title __body __actions */
+   Variants: --info --success --warning --danger --compact
+   Parts   : __icon __content __title __body __actions __dismiss
+             __line __sample */
 
 .zq-notice {
   display: flex;
@@ -40,3 +41,33 @@
   border-color: var(--zq-color-notice-error-border);
   color: var(--zq-color-status-danger);
 }
+/* Links inside a tinted banner inherit the banner colour; the accent link
+   colour is unreadable on notice backgrounds. */
+.zq-notice a { color: inherit; }
+
+/* --compact — dense operational strip (scan health, nudges): a title line
+   with a dismiss action, then optional per-item lines carrying a label,
+   a sample and an inline action. The dismiss button also works in
+   full-size notices. */
+.zq-notice--compact { padding: var(--zq-space-2) var(--zq-space-3); }
+.zq-notice__dismiss {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  font-size: 1.05em;
+  line-height: 1;
+  padding: 0 var(--zq-space-1);
+  cursor: pointer;
+  opacity: 0.6;
+}
+.zq-notice__dismiss:hover { opacity: 1; }
+.zq-notice__line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--zq-space-2);
+  margin-top: var(--zq-space-2);
+}
+.zq-notice__sample { flex-basis: 100%; }

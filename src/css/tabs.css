@@ -34,6 +34,26 @@
 }
 .zq-tab:focus-visible { outline: 2px solid var(--zq-color-accent-base); outline-offset: 2px; }
 
+/* Count pill inside a tab (e.g. the audit-log issue count). Muted by
+   default; emphasised on the active tab, whichever ARIA convention
+   marks it. */
+.zq-tab__count {
+  display: inline-block;
+  padding: 0 var(--zq-space-2);
+  border: var(--zq-border-width-hairline) solid var(--zq-color-border-subtle);
+  border-radius: var(--zq-radius-pill);
+  background: var(--zq-color-bg-surface-2);
+  color: var(--zq-color-text-muted);
+  font-size: var(--zq-font-size-1);
+  font-weight: var(--zq-font-weight-regular);
+  line-height: 1.5;
+}
+.zq-tab[aria-selected="true"] .zq-tab__count,
+.zq-tab[aria-current="page"] .zq-tab__count {
+  background: var(--zq-color-bg-highlight);
+  color: var(--zq-color-text-heading);
+}
+
 .zq-tabs--pills { border-bottom: 0; gap: var(--zq-space-2); }
 .zq-tabs--pills .zq-tab {
   padding: var(--zq-space-2) var(--zq-space-3);

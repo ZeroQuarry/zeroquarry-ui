@@ -95,6 +95,7 @@
       <div class="zq-notice zq-notice--success"><span class="zq-notice__content"><p class="zq-notice__title">Scan complete</p><p class="zq-notice__body">12 findings across 3 severity levels.</p></span></div>
       <div class="zq-notice zq-notice--warning"><span class="zq-notice__content"><p class="zq-notice__title">Not enough security runs</p><p class="zq-notice__body">3 of 5 used this month. Deleting a scan does not return its runs.</p></span></div>
       <div class="zq-notice zq-notice--danger"><span class="zq-notice__content"><p class="zq-notice__title">Could not reach the runner</p><p class="zq-notice__body">The private runner did not respond in time.</p></span></div>
+      <div class="zq-notice zq-notice--warning zq-notice--compact"><span class="zq-notice__content"><p class="zq-notice__title">2 stages didn't finish cleanly</p><div class="zq-notice__line"><span>Recon <span style="opacity:.7">&times;3</span></span><span class="zq-notice__sample" style="opacity:.7">timeout while probing https://example.test</span><button class="zq-btn zq-btn--sm" type="button">Rerun stage</button></div></span><span class="zq-notice__actions"><button class="zq-notice__dismiss" type="button" aria-label="Dismiss notice">&times;</button></span></div>
     </div>
 
     <div class="group-title">card</div>
@@ -163,11 +164,11 @@
       <div class="zq-tabs" role="tablist" aria-label="Scan sections">
         <button class="zq-tab" role="tab" id="demo-tab-1" aria-controls="demo-panel-1" aria-selected="true" type="button">Findings</button>
         <button class="zq-tab" role="tab" id="demo-tab-2" aria-controls="demo-panel-2" aria-selected="false" tabindex="-1" type="button">Evidence</button>
-        <button class="zq-tab" role="tab" id="demo-tab-3" aria-controls="demo-panel-3" aria-selected="false" tabindex="-1" type="button">Chat</button>
+        <button class="zq-tab" role="tab" id="demo-tab-3" aria-controls="demo-panel-3" aria-selected="false" tabindex="-1" type="button">Audit log <span class="zq-tab__count">4</span></button>
       </div>
       <div role="tabpanel" id="demo-panel-1" aria-labelledby="demo-tab-1" style="padding-top: var(--zq-space-4)"><p style="margin:0">Findings panel. Arrow keys move between tabs.</p></div>
       <div role="tabpanel" id="demo-panel-2" aria-labelledby="demo-tab-2" hidden style="padding-top: var(--zq-space-4)"><p style="margin:0">Evidence panel.</p></div>
-      <div role="tabpanel" id="demo-panel-3" aria-labelledby="demo-tab-3" hidden style="padding-top: var(--zq-space-4)"><p style="margin:0">Chat panel.</p></div>
+      <div role="tabpanel" id="demo-panel-3" aria-labelledby="demo-tab-3" hidden style="padding-top: var(--zq-space-4)"><p style="margin:0">Audit panel. The count pill emphasises on the active tab.</p></div>
     </div>
 
     <div class="group-title">pager</div>
