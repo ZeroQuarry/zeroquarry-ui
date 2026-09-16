@@ -45,13 +45,13 @@
 }
 
 .zq-btn--danger {
-  background: var(--zq-color-status-danger);
-  border-color: var(--zq-color-status-danger);
-  color: var(--zq-color-accent-contrast);
+  background: var(--zq-color-status-danger-solid-bg);
+  border-color: var(--zq-color-status-danger-solid-bg);
+  color: var(--zq-color-status-danger-solid-fg);
 }
 .zq-btn--danger:hover {
-  background: color-mix(in srgb, var(--zq-color-status-danger) 85%, var(--zq-color-bg-inset));
-  border-color: color-mix(in srgb, var(--zq-color-status-danger) 85%, var(--zq-color-bg-inset));
+  background: color-mix(in srgb, var(--zq-color-status-danger-solid-bg) 86%, var(--zq-color-status-danger-solid-fg));
+  border-color: color-mix(in srgb, var(--zq-color-status-danger-solid-bg) 86%, var(--zq-color-status-danger-solid-fg));
 }
 
 .zq-btn--ghost {
