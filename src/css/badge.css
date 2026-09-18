@@ -42,3 +42,20 @@
   background: var(--zq-color-severity-critical-bg);
   color: var(--zq-color-severity-critical-fg);
 }
+
+/* Finding-lifecycle tones — the review workflow's own state ramp: scans
+   propose, reviewers validate / dispute / mitigate / retest, outcomes
+   land as regression, accepted-risk, archived or closed. Candidate is
+   the not-yet-reviewed neutral of the ramp. Paired with the severity
+   ramp, which describes impact rather than workflow. */
+.zq-badge--candidate        { background: var(--zq-color-lifecycle-candidate-bg);        color: var(--zq-color-lifecycle-candidate-fg); }
+.zq-badge--needs-validation { background: var(--zq-color-lifecycle-needs-validation-bg); color: var(--zq-color-lifecycle-needs-validation-fg); }
+.zq-badge--validated        { background: var(--zq-color-lifecycle-validated-bg);        color: var(--zq-color-lifecycle-validated-fg); }
+.zq-badge--disputed         { background: var(--zq-color-lifecycle-disputed-bg);         color: var(--zq-color-lifecycle-disputed-fg); }
+.zq-badge--mitigated        { background: var(--zq-color-lifecycle-mitigated-bg);        color: var(--zq-color-lifecycle-mitigated-fg); }
+.zq-badge--retested         { background: var(--zq-color-lifecycle-retested-bg);         color: var(--zq-color-lifecycle-retested-fg); }
+.zq-badge--regression       { background: var(--zq-color-lifecycle-regression-bg);       color: var(--zq-color-lifecycle-regression-fg); }
+.zq-badge--accepted-risk    { background: var(--zq-color-lifecycle-accepted-risk-bg);    color: var(--zq-color-lifecycle-accepted-risk-fg); }
+.zq-badge--archived         { background: var(--zq-color-lifecycle-archived-bg);         color: var(--zq-color-lifecycle-archived-fg); }
+.zq-badge--active           { background: var(--zq-color-lifecycle-active-bg);           color: var(--zq-color-lifecycle-active-fg); }
+.zq-badge--closed           { background: var(--zq-color-lifecycle-closed-bg);           color: var(--zq-color-lifecycle-closed-fg); }

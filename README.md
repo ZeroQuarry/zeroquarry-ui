@@ -63,7 +63,7 @@ zeroquarry-ui/
 - Every custom property is namespaced `--zq-…` so the system can coexist with
   the app's existing `--bg-*` / `--text-*` variables during migration.
 - Nested JSON keys become dash-joined names:
-  `color.severity.critical.bg` → `--zq-color-severity-critical-bg`.
+  `color.severity.critical.bg` → `--zq-color-severity-critical-bg`. The severity ramp describes impact; the `color.lifecycle.*` group is the finding-review workflow's own state ramp, surfaced as badge variants.
 - `theme.dark.json` and `theme.light.json` must declare **the same keys**;
   only the values differ. Dark is the default (`:root`), light overrides under
   `[data-theme="light"]`, and `[data-theme="auto"]` follows the OS.
@@ -91,7 +91,7 @@ the build if a component hard-codes a colour or references an undefined token.
 |---|---|---|
 | Button | `.zq-btn` | `--primary --danger --ghost --ghost-danger --sm --block`, `__icon` |
 | Card | `.zq-card` | `__header __titles __title __subtitle __actions __body __footer`, `--interactive` |
-| Badge / severity chip | `.zq-badge` | `--critical --high --medium --low --info --success --neutral` |
+| Badge / severity chip | `.zq-badge` | `--critical --high --medium --low --info`, `--success --warning --neutral --danger`, finding lifecycle: `--candidate --needs-validation --validated --disputed --mitigated --retested --regression --accepted-risk --archived --active --closed` |
 | Notice | `.zq-notice` | `--info --success --warning --danger`, `__icon __content __title __body __actions` |
 | Page header | `.zq-page-header` | `__titles __title __subtitle __meta __actions` |
 | Table | `.zq-table` | `--compact`, `__num __select __actions` (wrap in `.zq-table-wrap`) |

@@ -70,6 +70,19 @@
         "fg": "#b6d8ff"
       }
     },
+    "lifecycle": {
+      "candidate": { "bg": "#1f2632", "fg": "#8a93a0" },
+      "needs-validation": { "bg": "#4a3b10", "fg": "#ffd98a" },
+      "validated": { "bg": "#1e4d2b", "fg": "#9ee6b0" },
+      "disputed": { "bg": "#4a1f1f", "fg": "#ffb8b8" },
+      "mitigated": { "bg": "#194a43", "fg": "#9ee6db" },
+      "retested": { "bg": "#213e59", "fg": "#a7d4ff" },
+      "regression": { "bg": "#573114", "fg": "#ffc58d" },
+      "accepted-risk": { "bg": "#3f2f59", "fg": "#d8c3ff" },
+      "archived": { "bg": "#343a40", "fg": "#d7dbe0" },
+      "active": { "bg": "#203f2a", "fg": "#aee8bb" },
+      "closed": { "bg": "#303640", "fg": "#d7dbe0" }
+    },
     "brand": {
       "node": "#8b7cf6"
     }
